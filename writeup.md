@@ -148,7 +148,8 @@ Initially I started with the LeNet architecture and with the following preproces
     img_y = exposure.adjust_log(img_y)
     img_y = ((img_y-128.0)/128.0).astype(np.float32)
     img_y = img_y.reshape(img_y.shape + (1,))
-
+____________________________________________________
+1)
 Parameters:
 EPOCHS = 10
 BATCH_SIZE = 128
@@ -162,6 +163,58 @@ EPOCH 7 ...
 Validation Accuracy = 0.915
 
 Test Accuracy = 0.906
+
+--------------------------------------------------------------
+2)
+Added Dropout with 
+0.9
+0.9
+0.8
+0.6
+
+EPOCH 10 ...
+Validation Accuracy = 0.944
+
+Test Accuracy = 0.925
+
+________________________________
+3)
+EPOCHS = 15
+BATCH_SIZE = 128
+rate = 0.001
+Added Dropout with 
+0.9
+0.9
+0.8
+0.5
+___________________________________
+4)
+Dropout with 
+0.9
+0.8
+0.7
+0.5
+
+EPOCH 16 ...
+Validation Accuracy = 0.931
+
+Test Accuracy = 0.929
+_________________________
+5)
+EPOCHS = 14
+BATCH_SIZE = 128
+rate = 0.001
+Dropout with 
+0.9
+0.8
+0.7
+0.5
+
+Changed network: multi-scale features: Feed NN with Conv1
+Validation Accuracy = 0.947
+
+Test Accuracy = 0.931
+
 
 ###Test a Model on New Images
 
