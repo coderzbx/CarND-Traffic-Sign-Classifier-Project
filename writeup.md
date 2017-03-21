@@ -294,49 +294,28 @@ Finally I evaluated the performance of my model with the test set. The accuracy 
 
 ### Test a Model on New Images
 
-Here are five traffic signs from picture I took in France:
-<img src="./new_images/11_Rightofway.jpg" width="360" /> 
-<img src="./new_images/25_RoadWork.jpg" width="360" /> 
-<img src="/new_images/14_Stop.jpg" width="360" /> 
-<img src="./new_images/17_Noentry.jpg" width="360" /> 
-<img src="./new_images/12_PriorityRoad.jpg" width="360" /> 
+Here are five traffic signs from picture I took in France:   
+<img src="./new_images/11_Rightofway.jpg" width="100" />    
+<img src="./new_images/25_RoadWork.jpg" width="100" />     
+<img src="/new_images/14_Stop.jpg" width="100" />   
+<img src="./new_images/17_Noentry.jpg" width="100" />   
+<img src="./new_images/12_PriorityRoad.jpg" width="100" />   
 
 The code for making predictions on my final model is located in the tenth cell of the Ipython notebook.
 
 Here are the results of the prediction:
 
-<img src="./examples/new_sign1.png" width="360" /> 
-<img src="./examples/new_sign2.png" width="360" /> 
-<img src="./examples/new_sign3.png" width="360" /> 
-<img src="./examples/new_sign4.png" width="360" /> 
-<img src="./examples/new_sign5.png" width="360" /> 
+* the first image is the test image
+* the second one is the prediction(an image )
+* plot showing the top five soft max probabilities
 
-
-| Image			        |     Prediction	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
-| Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
+<img src="./examples/new_sign1.png" width="480" /> 
+<img src="./examples/new_sign2.png" width="480" /> 
+<img src="./examples/new_sign3.png" width="480" /> 
+<img src="./examples/new_sign4.png" width="480" /> 
+<img src="./examples/new_sign5.png" width="480" /> 
 
 
 The model was able to correctly guess 5 of the 5 traffic signs, which gives an accuracy of 100%. Nice!
 
 
-#### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction and identify where in your code softmax probabilities were outputted. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
-
-The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
-
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
-
-| Probability         	|     Prediction	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
-
-
-For the second image ... 
