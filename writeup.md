@@ -1,6 +1,6 @@
-#**Traffic Sign Recognition** 
+# Traffic Sign Recognition 
 
-##Writeup Template
+## Writeup Template
 
 
 ---
@@ -31,14 +31,14 @@ The goals / steps of this project are the following:
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
 
 ---
-###Introduction
+### Introduction
 
 
 You're reading it! and here is a link to my [project code](https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
 
-###Data Set Summary & Exploration
+### Data Set Summary & Exploration
 
-####1. Basic summary of the data set 
+#### 1. Basic summary of the data set 
 
 The code for this step is contained in the second code cell of the IPython notebook.  
 
@@ -53,7 +53,7 @@ signs data set:
 
 
 
-####2. Exploratory visualization of the dataset
+#### 2. Exploratory visualization of the dataset
 
 Here is an exploratory visualization of the data set. It is a bar chart showing how many sample we have for each classes.
 
@@ -112,9 +112,9 @@ Class 42: End of no passing by vehicles over 3.5 metric tons  210 samples
 
 ```
 
-###Design and Test a Model Architecture
+### Design and Test a Model Architecture
 
-####1. Pre-processing 
+#### 1. Pre-processing 
 
 Here the function I use to pre-process each image in the dataset:
 
@@ -152,7 +152,7 @@ Here is an example of a traffic sign image before and after the processing:
 
 Initially I used `.exposure.adjust_log`, that it is quite fast but finally I decided to use `exposure.equalize_adapthist`, that gives a better accuracy.
 
-####2. Augmentation
+#### 2. Augmentation
 
 To add more data to the the data set, I created two new datasets starting from the original training dataset, composed by 34799. In this way I obtain 34799x3 = 104397 samples in the training dataset.
 
@@ -191,7 +191,7 @@ Motion blur is the apparent streaking of rapidly moving objects in a still image
 <img src="./examples/original_samples1.png" width="360" /> <img src="./examples/mb_prepro_samples.png" width="360" />
 
 
-####3. Final model architecture
+#### 3. Final model architecture
 
 I started from the LeNet network and I modified it using the multi-scale features took inspiration from the model presented in [Pierre Sermanet and Yann LeCun](http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf) paper. Finally I increased the number of filters used in the first two convolutions.
 We have in total 3 layers: 2 convolutional layers for feature extraction and one fully connected layer used .
@@ -213,7 +213,7 @@ We have in total 3 layers: 2 convolutional layers for feature extraction and one
 
 
 
-####4. Describe how, and identify where in your code, you trained your model.
+#### 4. Describe how, and identify where in your code, you trained your model.
 
 The code for training the model is located in the eigth cell of the ipython notebook. 
 
@@ -221,7 +221,7 @@ To train the model I used 20 epochs with a batch size of 128, the [AdamOptimizer
 
 
 
-####5. Describe the approach taken for finding a solution. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
+#### 5. Describe the approach taken for finding a solution. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 The code for calculating the accuracy of the model is located in the ninth cell of the Ipython notebook.
 
@@ -292,20 +292,25 @@ In addition I added the L2 regularization and I used the function `equalize_adap
 Finally I evaluated the performance of my model with the test set. The accuracy was equal to 96.7%.
 
 
-###Test a Model on New Images
+### Test a Model on New Images
 
 Here are five traffic signs from picture I took in France:
-<img src="./new_signs/11_Rightofway.jpg" width="360" /> 
-<img src="./new_signs/25_RoadWork.jpg" width="360" /> 
-<img src="/new_signs/14_Stop.jpg" width="360" /> 
-<img src="./new_signs/17_Noentry.jpg" width="360" /> 
-<img src="./new_signs/12_PriorityRoad.jpg" width="360" /> 
+<img src="./new_images/11_Rightofway.jpg" width="360" /> 
+<img src="./new_images/25_RoadWork.jpg" width="360" /> 
+<img src="/new_images/14_Stop.jpg" width="360" /> 
+<img src="./new_images/17_Noentry.jpg" width="360" /> 
+<img src="./new_images/12_PriorityRoad.jpg" width="360" /> 
 
 The code for making predictions on my final model is located in the tenth cell of the Ipython notebook.
 
 Here are the results of the prediction:
-![alt text][./new_signs/11_Rightofway] ![alt text][./new_signs/25_RoadWork_10.jpg] ![alt text][./new_signs/14_Stop_70.jpg] 
-![alt text][./new_signs/17_Noentry.jpg] ![alt text][./new_signs/12_PriorityRoad_70.jpg]
+
+<img src="./examples/new_sign1.png" width="360" /> 
+<img src="./examples/new_sign2.png" width="360" /> 
+<img src="./examples/new_sign3.png" width="360" /> 
+<img src="./examples/new_sign4.png" width="360" /> 
+<img src="./examples/new_sign5.png" width="360" /> 
+
 
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
@@ -319,7 +324,7 @@ Here are the results of the prediction:
 The model was able to correctly guess 5 of the 5 traffic signs, which gives an accuracy of 100%. Nice!
 
 
-####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction and identify where in your code softmax probabilities were outputted. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
+#### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction and identify where in your code softmax probabilities were outputted. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
 The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
 
