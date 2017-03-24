@@ -27,18 +27,14 @@ The goals / steps of this project are the following:
 [image7]: ./examples/placeholder.png "Traffic Sign 4"
 [image8]: ./examples/placeholder.png "Traffic Sign 5"
 
-## Rubric Points
-###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
-
----
-### Introduction
+## Introduction
 
 
 You're reading it! and here is a link to my [project code](https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
 
-### Data Set Summary & Exploration
+## Data Set Summary & Exploration
 
-#### 1. Basic summary of the data set 
+### 1. Basic summary of the data set 
 
 The code for this step is contained in the second code cell of the IPython notebook.  
 
@@ -53,7 +49,7 @@ signs data set:
 
 
 
-#### 2. Exploratory visualization of the dataset
+### 2. Exploratory visualization of the dataset
 
 Here is an exploratory visualization of the data set. It is a bar chart showing how many sample we have for each classes.
 
@@ -112,9 +108,9 @@ Class 42: End of no passing by vehicles over 3.5 metric tons  210 samples
 
 ```
 
-### Design and Test a Model Architecture
+## Design and Test a Model Architecture
 
-#### 1. Pre-processing 
+### 1. Pre-processing 
 
 Here the function I use to pre-process each image in the dataset:
 
@@ -152,11 +148,11 @@ Here is an example of a traffic sign image before and after the processing:
 
 Initially I used `.exposure.adjust_log`, that it is quite fast but finally I decided to use `exposure.equalize_adapthist`, that gives a better accuracy.
 
-#### 2. Augmentation
+### 2. Augmentation
 
 To add more data to the the data set, I created two new datasets starting from the original training dataset, composed by 34799. In this way I obtain 34799x3 = 104397 samples in the training dataset.
 
-#### Keras ImageDataGenerator
+### Keras ImageDataGenerator
 I used the Keras function [ImageDataGenerator](https://keras.io/preprocessing/image/) to generate new images with the following settings:
 
 ```python
@@ -185,13 +181,13 @@ Here is an example of an original image and an augmented image:
 
 <img src="./examples/original_samples.png" width="360" /> <img src="./examples/keras_prepro_samples.png" width="360" />
 
-#### Motion Blur
+### Motion Blur
 Motion blur is the apparent streaking of rapidly moving objects in a still image. 
 
 <img src="./examples/original_samples1.png" width="360" /> <img src="./examples/mb_prepro_samples.png" width="360" />
 
 
-#### 3. Final model architecture
+### 3. Final model architecture
 
 I started from the LeNet network and I modified it using the multi-scale features took inspiration from the model presented in [Pierre Sermanet and Yann LeCun](http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf) paper. Finally I increased the number of filters used in the first two convolutions.
 We have in total 3 layers: 2 convolutional layers for feature extraction and one fully connected layer used .
@@ -213,7 +209,7 @@ We have in total 3 layers: 2 convolutional layers for feature extraction and one
 
 
 
-#### 4. Describe how, and identify where in your code, you trained your model.
+### 4. Describe how, and identify where in your code, you trained your model.
 
 The code for training the model is located in the eigth cell of the ipython notebook. 
 
@@ -221,7 +217,7 @@ To train the model I used 20 epochs with a batch size of 128, the [AdamOptimizer
 
 
 
-#### 5. Describe the approach taken for finding a solution. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
+### 5. Describe the approach taken for finding a solution. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 The code for calculating the accuracy of the model is located in the ninth cell of the Ipython notebook.
 
@@ -243,7 +239,7 @@ If a well known architecture was chosen:
 * Why did you believe it would be relevant to the traffic sign application?
 * How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
 
-##### First attempt: validation accuracy 91.5 % 
+#### First attempt: validation accuracy 91.5 % 
 Initially I started with the LeNet architecture and with the following preprocess pipeline:
 * Convert in YUV, keep the Y
 * Adjust the exposure
@@ -260,7 +256,7 @@ Number of testing examples = 12630
 
 
 
-##### Second attempt: validation accuracy 93.1%
+#### Second attempt: validation accuracy 93.1%
 I added Dropout after each layer: 
 1) 0.9
 2) 0.7
@@ -268,31 +264,31 @@ I added Dropout after each layer:
 4) 0.5
 
 
-##### Third attempt: validation accuracy 93.3%
+#### Third attempt: validation accuracy 93.3%
 I changed network using multi-scale features as suggested in the paper [Traffic Sign Recognition with Multi-Scale Convolutional Networks](https://www.google.fr/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwi079aWzOjSAhWHJ8AKHUx_ARkQFggdMAA&url=http%3A%2F%2Fyann.lecun.org%2Fexdb%2Fpublis%2Fpsgz%2Fsermanet-ijcnn-11.ps.gz&usg=AFQjCNGTHlNOHKmIxaKYw3_h-VYrsgpCag&sig2=llvR7_9QizK3hkAgkmUKTw)
 
 <img src="https://ai2-s2-public.s3.amazonaws.com/figures/2016-11-08/9ab0de951cc9cdf16887b1f841f8da6affc9c0de/1-Figure2-1.p" width="360" /> 
 
-##### Fourth attempt: validation accuracy 94.6%
+#### Fourth attempt: validation accuracy 94.6%
 I augmented the training set using the Keras function [ImageDataGenerator](https://keras.io/preprocessing/image/).In this way I double the training set.
  
 Number of training examples = 34799x2 = 69598
 Number of validation examples = 4410
 
 
-##### Fourth attempt: validation accuracy 96.1%
+#### Fourth attempt: validation accuracy 96.1%
 Since the training accuracy was not very high, I decided to increase the number of filters in the first two convolutional layers.
 First layer: from 6 to 12 filters.
 Second layer: from 16 to 24 filters.
 
-##### Final attempt: validation accuracy 98.5%
+#### Final attempt: validation accuracy 98.5%
 I augmented the data adding the motion blur to each sample of the training data. In this way I triplicate the number of samples in the training set. 
 In addition I added the L2 regularization and I used the function `equalize_adapthist` instead of `.exposure.adjust_log` during the image preprocessing.
 
 Finally I evaluated the performance of my model with the test set. The accuracy was equal to 96.7%.
 
 
-### Test a Model on New Images
+## Test a Model on New Images
 
 Here are five traffic signs from picture I took in France:   
 <img src="./new_images/11_Rightofway.jpg" width="100" />    
@@ -317,5 +313,11 @@ Here are the results of the prediction:
 
 
 The model was able to correctly guess 5 of the 5 traffic signs, which gives an accuracy of 100%. Nice!
+
+
+<div>
+    <a href="https://plot.ly/~jokla/1/?share_key=DmJjGBAv9EQXNjMc5jDWCT" target="_blank" title="Plot 1" style="display: block; text-align: center;"><img src="https://plot.ly/~jokla/1.png?share_key=DmJjGBAv9EQXNjMc5jDWCT" alt="Plot 1" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
+    <script data-plotly="jokla:1" sharekey-plotly="DmJjGBAv9EQXNjMc5jDWCT" src="https://plot.ly/embed.js" async></script>
+</div>
 
 
