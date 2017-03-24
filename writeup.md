@@ -1,8 +1,5 @@
 # Traffic Sign Recognition 
 
-## Writeup Template
-
-
 ---
 
 **Build a Traffic Sign Recognition Project**
@@ -29,8 +26,9 @@ The goals / steps of this project are the following:
 
 ## Introduction
 
+In this project I used a convolutional neural network (CNN) to classify traffic signs. I trained and validated a model so it can classify traffic sign images using the German Traffic Sign Dataset. After the model is trained, I tried out the model on images of traffic signs that I took by with my camera.
 
-You're reading it! and here is a link to my [project code](https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
+Here is the [project code](https://github.com/jokla/CarND-Traffic-Sign-Classifier-Project)
 
 ## Data Set Summary & Exploration
 
@@ -59,7 +57,7 @@ We can notice that the distribution is not balanced. We have some classes with l
 
 <img src="./examples/dist_class_validation.png" width="360" alt="Distribution Class Validation" />
 
-The distribution is very similar. In general, it would be a good idea to balance the dataset, but in this case I am not sure it would be very useful, since in reality some kind of traffic signs (for example ) could occour less frequently then others (the stop sign for example). 
+The distribution is very similar. In general, it would be a good idea to balance the dataset, but in this case I am not sure it would be very useful, since in reality some kind of traffic signs (for example the 20km/h speed limit) could occur less frequently then others (the stop sign for example). 
 
 ```
 Class 0: Speed limit (20km/h)                                180 samples
@@ -285,17 +283,41 @@ Second layer: from 16 to 24 filters.
 I augmented the data adding the motion blur to each sample of the training data. In this way I triplicate the number of samples in the training set. 
 In addition I added the L2 regularization and I used the function `equalize_adapthist` instead of `.exposure.adjust_log` during the image preprocessing.
 
-Finally I evaluated the performance of my model with the test set. The accuracy was equal to 96.7%.
+### Performance on the test set
+Finally I evaluated the performance of my model with the test set.
+
+#### Accuracy
+The accuracy was equal to 96.7%.
+
+#### Precision
+The Precision  was equal to  0.95%
+The precision is the ratio tp / (tp + fp) where tp is the number of true positives and fp the number of false positives. The precision is intuitively the ability of the classifier not to label as positive a sample that is negative.
+
+#### Recall
+The recall  was equal to  0.97%
+The recall is the ratio tp / (tp + fn) where tp is the number of true positives and fn the number of false negatives. The recall is intuitively the ability of the classifier to find all the positive samples.
+
+#### Confusion matrix
+
+Let's analyze the [confusion matrix](https://en.wikipedia.org/wiki/Confusion_matrix):
+
+<div>
+    <a href="https://plot.ly/~jokla/1/?share_key=DmJjGBAv9EQXNjMc5jDWCT" target="_blank" title="Plot 1" style="display: block; text-align: center;"><img src="https://plot.ly/~jokla/1.png?share_key=DmJjGBAv9EQXNjMc5jDWCT" alt="Plot 1" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
+</div>
+
+We can notice that:
+
+* 28/60 samples of to the class 19 (Dangerous curve to the left) are misclassified as samples belonging to the class 23 (Slippery road). This can be explained by the fact that the class number 19 is underrepresented in the training set: it has only  180 samples.   
+* 34/630 samples of to the class 5 (Speed limit 80km/h) are misclassified as samples belonging to the class 2 (Speed limit 50km/h).  
+* The model is not very good to classify the class number 30 (Beware of ice/snow), it classified samples in a wrong way 61 times(bad precision). 
+* The model produces 80 false positive for the class 23 (low recall). 
 
 
 ## Test a Model on New Images
 
 Here are five traffic signs from picture I took in France:   
-<img src="./new_images/11_Rightofway.jpg" width="100" />    
-<img src="./new_images/25_RoadWork.jpg" width="100" />     
-<img src="/new_images/14_Stop.jpg" width="100" />   
-<img src="./new_images/17_Noentry.jpg" width="100" />   
-<img src="./new_images/12_PriorityRoad.jpg" width="100" />   
+<img src="./new_images/11_Rightofway.jpg" width="100" /> <img src="./new_images/25_RoadWork.jpg" width="100" />  <img src="/new_images/14_Stop.jpg" width="100" />   
+<img src="./new_images/17_Noentry.jpg" width="100" />  <img src="./new_images/12_PriorityRoad.jpg" width="100" />  <img src="./new_images/33_RightOnly.jpg" width="100" />    
 
 The code for making predictions on my final model is located in the tenth cell of the Ipython notebook.
 
@@ -310,14 +332,9 @@ Here are the results of the prediction:
 <img src="./examples/new_sign3.png" width="480" /> 
 <img src="./examples/new_sign4.png" width="480" /> 
 <img src="./examples/new_sign5.png" width="480" /> 
+<img src="./examples/new_sign6.png" width="480" /> 
 
+The model was able to correctly guess 6 of the 6 traffic signs, which gives an accuracy of 100%. Nice!
 
-The model was able to correctly guess 5 of the 5 traffic signs, which gives an accuracy of 100%. Nice!
-
-
-<div>
-    <a href="https://plot.ly/~jokla/1/?share_key=DmJjGBAv9EQXNjMc5jDWCT" target="_blank" title="Plot 1" style="display: block; text-align: center;"><img src="https://plot.ly/~jokla/1.png?share_key=DmJjGBAv9EQXNjMc5jDWCT" alt="Plot 1" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
-    <script data-plotly="jokla:1" sharekey-plotly="DmJjGBAv9EQXNjMc5jDWCT" src="https://plot.ly/embed.js" async></script>
-</div>
 
 
