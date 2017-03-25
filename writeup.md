@@ -264,7 +264,7 @@ I added Dropout after each layer of the network LeNet:
 #### Third attempt: validation accuracy 93.3%
 I changed network using multi-scale features as suggested in the paper [Traffic Sign Recognition with Multi-Scale Convolutional Networks](https://www.google.fr/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwi079aWzOjSAhWHJ8AKHUx_ARkQFggdMAA&url=http%3A%2F%2Fyann.lecun.org%2Fexdb%2Fpublis%2Fpsgz%2Fsermanet-ijcnn-11.ps.gz&usg=AFQjCNGTHlNOHKmIxaKYw3_h-VYrsgpCag&sig2=llvR7_9QizK3hkAgkmUKTw) and use only one fully connected layer at the end of the network.
 
-<img src="https://ai2-s2-public.s3.amazonaws.com/figures/2016-11-08/9ab0de951cc9cdf16887b1f841f8da6affc9c0de/1-Figure2-1.p" width="360" /> 
+<img src="./new_images/1-Figure2-1.png" width="360" /> 
 
 
 
