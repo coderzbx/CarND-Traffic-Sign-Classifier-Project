@@ -28,6 +28,12 @@ The steps of this project are the following:
 * Analyze the softmax probabilities of the new images
 * Summarize the results with a written report
 
+My final model results are:
+* training set accuracy of 0.975
+* validation set accuracy of  0.985 
+* test set accuracy of 0.972
+
+
 
 ## Data Set Summary & Exploration
 
@@ -296,6 +302,8 @@ Let's analyze the [confusion matrix](https://en.wikipedia.org/wiki/Confusion_mat
     <a href="https://plot.ly/~jokla/1/?share_key=DmJjGBAv9EQXNjMc5jDWCT" target="_blank" title="Plot 1" style="display: block; text-align: center;"><img src="https://plot.ly/~jokla/1.png?share_key=DmJjGBAv9EQXNjMc5jDWCT" alt="Plot 1" style="max-width: 100%;width: 600px;"  width="900" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
 </div>
 
+You can click on the picture to interact with the map.
+
 We can notice that:
 
 * 28/60 samples of to the class 19 (Dangerous curve to the left) are misclassified as samples belonging to the class 23 (Slippery road). This can be explained by the fact that the class number 19 is underrepresented in the training set: it has only 180 samples.   
@@ -325,31 +333,33 @@ Here are the results of the prediction:
 
 The model was able to correctly guess 6 of the 6 traffic signs, which gives an accuracy of 100%. Nice!
 
-## Visualize the Neural Network's State with Test Images¶
-We can understand what the weights of a neural network look like better by plotting their feature maps. After successfully training your neural network you can see what it's feature maps look like by plotting the output of the network's weight layers in response to a test stimuli image. From these plotted feature maps, it's possible to see what characteristics of an image the network finds interesting. For a sign, maybe the inner network feature maps react with high activation to the sign's boundary outline or to the contrast in the sign's painted symbol.
+## Visualize the Neural Network's State with Test Images
 
-Here the output of the first convolution layer:
-<img src="./examples/visualize1.png" width="480" /> 
-Here the output of the second convolution layer:
-<img src="./examples/visualize2.png" width="480" /> 
+We can understand what the weights of a neural network look like better by plotting their feature maps. After successfully training your neural network you can see what it's feature maps look like by plotting the output of the network's weight layers in response to a test stimuli image. From these plotted feature maps, it's possible to see what characteristics of an image the network finds interesting. For a sign, maybe the inner network feature maps react with high activation to the sign's boundary outline or to the contrast in the sign's painted symbol.   
+
+Here the output of the first convolution layer:  
+<img src="./examples/visualize1.png" width="700" />   
+Here the output of the second convolution layer:  
+<img src="./examples/visualize2.png" width="700" /> 
 
 We can notice that the CNN learned to detect useful features on its own. We can see in the first picture some edges of the sign for example.  
 
-Now another example using a test picture with no sign on it:
+Now another example using a test picture with no sign on it:   
+
 <img src="./examples/no_sign.png" width="100" /> 
 
 
-In this case the CNN doesn’t recognize any useful features. The activations of the first feature map appear to contain mostly noise:
+In this case the CNN does not recognize any useful features. The activations of the first feature map appear to contain mostly noise:   
 
-<img src="./examples/visualize1_nosign.png" width="100" /> 
+<img src="./examples/visualize1_nosign.png" width="700" />  
 
 ## Final considerations
 
-# Premise:
+### Premise:
 For this project I had this constraint:
 * Use only CPU to train. I had to use only the CPU of my laptop because I did't have any good GPU at my disposal. I choose to not use any online service as AWS or FloydHub, mostly because I was waiting for the arrival of the GTX 1080. Unfortunately, it did not arrive in time for this project. This force me to use a small network and to keep the number of epochs around 20. 
 
-# Some possible improvements:
+### Some possible improvements:
 * I would use Keras to define the network and its function ImageDataGenerator to generate augmented samples on the fly. Using more data could improve the performance of the model. In my case I have generated an augmented dataset once, saved it on the disk and used it every time to train. It would be useful to generate randomly the dataset each time before the training.
 * The confusion matrix gives us suggestions to improve the model (see section `Confusion matrix`). There are some classes with low precision or recall. It would be useful to try to add more data for these classes. For example, I would generate new samples for the class 19 (Dangerous curve to the left) since it has only 180 samples and the model.
 * The accuracy for the training set is 0.975. This means that the model is probably underfitting a little bit. I tried to make a deeper network (adding more layers) and increasing the number of filters but it was too slow to train it using only CPU. I will try when I will have a GPU.
