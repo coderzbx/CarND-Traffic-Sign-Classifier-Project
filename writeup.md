@@ -63,7 +63,8 @@ We can notice that the distribution is not balanced. We have some classes with l
 
 <img src="./examples/dist_class_validation.png" width="500" alt="Distribution Class Validation" />
 
-The distributions are very similar. In general, it would be a good idea to balance the dataset, but in this case, I am not sure it would be very useful since in reality some traffic signs (for example the 20km/h speed limit) could occur less frequently than others (the stop sign for example). 
+The distributions are very similar. Even if it would be wise to balance the dataset, in this case, I am not sure it would be very useful. In fact, some traffic signs (for example the 20km/h speed limit) could occur less frequently than others (the stop sign for example). For this reason I decided to not balance the dataset.  
+
 
 ```
 Class 0: Speed limit (20km/h)                                180 samples
@@ -116,7 +117,7 @@ Class 42: End of no passing by vehicles over 3.5 metric tons  210 samples
 
 ### 1. Pre-processing 
 
-This phase is crucial to improving the performance of the model. First of all, I decided to convert the RGB image into grayscale color, in this way we reduce the numbers of channels in the input of the network without decreasing the performance. In fact, as Pierre Sermanet and Yann LeCun mentioned in their paper ["Traffic Sign Recognition with Multi-Scale Convolutional Networks"](http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf), using color channels did not seem to improve the classification accuracy. Also, to help the training phase I normalized and translated each image to have a range from 0 to 1 and to have zero mean. I also applied the Contrast Limited Adaptive Histogram Equalization (CLAHE), an algorithm for local contrast enhancement, which uses histograms computed over different tile regions of the image. Local details can, therefore, be enhanced even in areas that are darker or lighter than most of the image. This should help the feature exaction.
+This phase is crucial to improving the performance of the model. First of all, I decided to convert the RGB image into grayscale color. This allows to reduce the numbers of channels in the input of the network without decreasing the performance. In fact, as Pierre Sermanet and Yann LeCun mentioned in their paper ["Traffic Sign Recognition with Multi-Scale Convolutional Networks"](http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf), using color channels did not seem to improve the classification accuracy. Also, to help the training phase, I normalized each image to have a range from 0 to 1 and translated to get zero mean. I also applied the [Contrast Limited Adaptive Histogram Equalization](https://en.wikipedia.org/wiki/Adaptive_histogram_equalization) (CLAHE), an algorithm for local contrast enhancement, which uses histograms computed over different tile regions of the image. Local details can, therefore, be enhanced even in areas that are darker or lighter than most of the image. This should help the feature exaction.
 
 Here the function I used to pre-process each image in the dataset:
 
