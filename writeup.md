@@ -236,7 +236,7 @@ My final model results were:
 #### First attempt: validation accuracy 91.5 % 
 Initially I started with the [LeNet architecture](http://yann.lecun.com/exdb/lenet/), a convolutional network designed for handwritten and machine-printed character recognition.
 
-<img src="./examples/lenet5.png" width="360" /> 
+<img src="./examples/lenet5.png" width="900" /> 
 
 
 
@@ -268,7 +268,7 @@ I added Dropout after each layer of the network LeNet:
 #### Third attempt: validation accuracy 93.3%
 I changed network using multi-scale features as suggested in the paper [Traffic Sign Recognition with Multi-Scale Convolutional Networks](https://www.google.fr/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwi079aWzOjSAhWHJ8AKHUx_ARkQFggdMAA&url=http%3A%2F%2Fyann.lecun.org%2Fexdb%2Fpublis%2Fpsgz%2Fsermanet-ijcnn-11.ps.gz&usg=AFQjCNGTHlNOHKmIxaKYw3_h-VYrsgpCag&sig2=llvR7_9QizK3hkAgkmUKTw) and use only one fully connected layer at the end of the network.
 
-<img src="./examples/net.png" width="360" /> 
+<img src="./examples/net.png" width="900" /> 
 
 
 
