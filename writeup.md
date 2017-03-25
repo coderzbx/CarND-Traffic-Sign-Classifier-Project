@@ -208,6 +208,7 @@ We have in total 3 layers: 2 convolutional layers for feature extraction and one
 | Max pooling	      	| 2x2 stride, output = 5x5x24.   			    |
 | Dropout  (b)       	| 0.6      									    |
 | Fully connected		| max_pool(a) + (b) flattend. input = 1188. Output = 320	|
+| Dropout  (c)       	| 0.5      									    |
 | Fully connected		| Input = 320. Output = n_classes	           |
 | Softmax				|         									  |
 
@@ -270,6 +271,10 @@ I augmented the training set using the Keras function [ImageDataGenerator](https
 Number of training examples = 34799x2 = 69598
 Number of validation examples = 4410
 
+Used Dropout:
+a) 0.8
+b) 0.7
+c) 0.6
 
 #### Fourth attempt: validation accuracy 96.1%
 Since the training accuracy was not very high, I decided to increase the number of filters in the first two convolutional layers.
