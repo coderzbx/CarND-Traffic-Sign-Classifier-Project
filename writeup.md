@@ -18,6 +18,14 @@
 
 In this project I used a convolutional neural network (CNN) to classify traffic signs. I trained and validated a model so it can classify traffic sign images using the [German Traffic Sign Dataset](http://benchmark.ini.rub.de/). After the model is trained, I tried out the model on images of traffic signs that I took with my smartphone camera.
 
+
+My final model results are:
+* Training set accuracy of 97.5%
+* Validation set accuracy of  98.5% 
+* Test set accuracy of 97.2%
+* New Test set accuracy of 100% (6 new images taken by me)
+
+
 Here is the [project code](https://github.com/jokla/CarND-Traffic-Sign-Classifier-Project). Please note that I used only the CPU of my laptop to train the network.
 
 The steps of this project are the following:
@@ -27,11 +35,6 @@ The steps of this project are the following:
 * Use the model to make predictions on new images
 * Analyze the softmax probabilities of the new images
 * Summarize the results with a written report
-
-My final model results are:
-* training set accuracy of 0.975
-* validation set accuracy of  0.985 
-* test set accuracy of 0.972
 
 
 
