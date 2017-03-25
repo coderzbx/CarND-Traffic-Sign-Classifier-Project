@@ -26,7 +26,7 @@ My final model results are:
 * New Test set accuracy of 100% (6 new images taken by me)
 
 
-Here is the [project code](https://github.com/jokla/CarND-Traffic-Sign-Classifier-Project). Please note that I used only the CPU of my laptop to train the network.
+Here is the [project code](https://github.com/jokla/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb). Please note that I used only the CPU of my laptop to train the network.
 
 The steps of this project are the following:
 * Load the data set 
