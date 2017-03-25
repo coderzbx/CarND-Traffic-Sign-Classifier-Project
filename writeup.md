@@ -57,11 +57,11 @@ We have to work with images with resolution of 32x32x3 representing 43 type of d
 
 Here is an exploratory visualization of the data set. It is a bar chart showing how many sample we have for each classes.
 
-<img src="./examples/dist_class_training.png" width="360" alt="Distribution Class Training" />
+<img src="./examples/dist_class_training.png" width="500" alt="Distribution Class Training" />
 
 We can notice that the distribution is not balanced. We have some classes with less then 300 examples and other well represented with more then 1000 examples. We can analyze now the validation dataset distribution:
 
-<img src="./examples/dist_class_validation.png" width="360" alt="Distribution Class Validation" />
+<img src="./examples/dist_class_validation.png" width="500" alt="Distribution Class Validation" />
 
 The distributions are very similar. In general, it would be a good idea to balance the dataset, but in this case I am not sure it would be very useful, since in reality some kind of traffic signs (for example the 20km/h speed limit) could occur less frequently then others (the stop sign for example). 
 
@@ -264,7 +264,7 @@ I added Dropout after each layer of the network LeNet:
 #### Third attempt: validation accuracy 93.3%
 I changed network using multi-scale features as suggested in the paper [Traffic Sign Recognition with Multi-Scale Convolutional Networks](https://www.google.fr/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwi079aWzOjSAhWHJ8AKHUx_ARkQFggdMAA&url=http%3A%2F%2Fyann.lecun.org%2Fexdb%2Fpublis%2Fpsgz%2Fsermanet-ijcnn-11.ps.gz&usg=AFQjCNGTHlNOHKmIxaKYw3_h-VYrsgpCag&sig2=llvR7_9QizK3hkAgkmUKTw) and use only one fully connected layer at the end of the network.
 
-<img src="./new_images/1-Figure2-1.png" width="360" /> 
+<img src="./examples/1-Figure2-1.png" width="360" /> 
 
 
 
