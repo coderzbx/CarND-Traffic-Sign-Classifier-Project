@@ -250,19 +250,19 @@ Parameters:
 * BATCH_SIZE = 128
 * Learning rate = 0.001
  
-Number of training examples = 34799
-Number of validation examples = 4410
-Number of testing examples = 12630
+Number of training examples = 34799   
+Number of validation examples = 4410   
+Number of testing examples = 12630   
 
 At each step I will mention only the changes I adopted to improve the accuracy.
 
 
 #### Second attempt: validation accuracy 93.1%
 I added Dropout after each layer of the network LeNet: 
-1) 0.9
-2) 0.7
-3) 0.6
-4) 0.5
+1) `0.9` (after C1)
+2) `0.7` (after C3)
+3) `0.6` (after C5)
+4) `0.5` (after F6)
 
 
 #### Third attempt: validation accuracy 93.3%
@@ -275,21 +275,21 @@ I changed network using multi-scale features as suggested in the paper [Traffic 
 #### Fourth attempt: validation accuracy 94.6%
 I augmented the training set using the Keras function [ImageDataGenerator](https://keras.io/preprocessing/image/).In this way I double the training set.
  
-Number of training examples = 34799x2 = 69598
-Number of validation examples = 4410
+Number of training examples = 34799x2 = 69598   
+Number of validation examples = 4410   
 
-Used Dropout:
-a) 0.8
-b) 0.7
-c) 0.6
+Used Dropout:   
+a) `0.8`   
+b) `0.7`   
+c) `0.6 `  
 
-#### Fourth attempt: validation accuracy 96.1%
-Since the training accuracy was not very high, I decided to increase the number of filters in the first two convolutional layers.
-First layer: from 6 to 12 filters.
-Second layer: from 16 to 24 filters.
+#### Fifth attempt: validation accuracy 96.1%
+Since the training accuracy was not very high, I decided to increase the number of filters in the first two convolutional layers.   
+First layer: from 6 to 12 filters.     
+Second layer: from 16 to 24 filters.   
 
 #### Final attempt: validation accuracy 98.5%
-I augmented the data adding the motion blur to each sample of the training data. In this way I triplicate the number of samples in the training set. 
+I augmented the data adding the motion blur to each sample of the training data. In this way I triplicate the number of samples in the training set.   
 In addition I added the L2 regularization and I used the function `equalize_adapthist` instead of `.exposure.adjust_log` during the image preprocessing.
 
 ### Performance on the test set
@@ -299,7 +299,7 @@ Finally I evaluated the performance of my model with the test set.
 The accuracy was equal to 96.6%.
 
 #### Precision
-The Precision  was equal to  95.5%
+The Precision  was equal to  95.5%   
 The precision is the ratio tp / (tp + fp) where tp is the number of true positives and fp the number of false positives. The precision is intuitively the ability of the classifier not to label as positive a sample that is negative.
 
 #### Recall
