@@ -317,8 +317,8 @@ We can notice that:
 
 * 28/60 samples of to the class 19 (Dangerous curve to the left) are misclassified as samples belonging to the class 23 (Slippery road). This can be explained by the fact that the class number 19 is underrepresented in the training set: it has only 180 samples.   
 * 34/630 samples of to the class 5 (Speed limit 80km/h) are misclassified as samples belonging to the class 2 (Speed limit 50km/h).  
-* The model is not very good to classify the class number 30 (Beware of ice/snow), it classified samples in a wrong way 61 times (bad precision). 
-* The model produces 80 false positives for the class 23 (low recall). 
+* The model is not very good to classify the class number 30 (Beware of ice/snow), it classified samples in a wrong way 61 times. 
+* The model produces 80 false positives for the class 23. 
 
 
 ## Test a Model on New Images
