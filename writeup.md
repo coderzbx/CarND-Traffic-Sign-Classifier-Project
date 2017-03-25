@@ -198,7 +198,7 @@ Motion blur is the apparent streaking of rapidly moving objects in a still image
 ### 3. Final model architecture
 
 I started from the LeNet network and I modified it using the multi-scale features took inspiration from the model presented in [Pierre Sermanet and Yann LeCun](http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf) paper. Finally, I increased the number of filters used in the first two convolutions.
-We have in total 3 layers: 2 convolutional layers for feature extraction and one fully connected layer used.
+We have in total 3 layers: 2 convolutional layers for feature extraction and one fully connected layer used. Note that my network has one convolutional layer less than the [Pierre Sermanet and Yann LeCun (http://yann.lecun.com/exdb/publis/pdf/sermanet-ijcnn-11.pdf) version.
 
 | Layer         		    |     Description	        			     		| 
 |:---------------------:|:---------------------------------------------:| 
@@ -226,9 +226,9 @@ To train the model I used 20 epochs with a batch size of 128, the [AdamOptimizer
 ### 5. Describe the approach taken for finding a solution.
 
 My final model results were:
-* training set accuracy of 0.975
-* validation set accuracy of  0.985 
-* test set accuracy of 0.972
+* Training set accuracy of 97.5%
+* Validation set accuracy of  98.5% 
+* Test set accuracy of 97.2%
 
 
 #### First attempt: validation accuracy 91.5 % 
@@ -264,7 +264,7 @@ I added Dropout after each layer of the network LeNet:
 
 
 #### Third attempt: validation accuracy 93.3%
-I changed network using multi-scale features as suggested in the paper [Traffic Sign Recognition with Multi-Scale Convolutional Networks](https://www.google.fr/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwi079aWzOjSAhWHJ8AKHUx_ARkQFggdMAA&url=http%3A%2F%2Fyann.lecun.org%2Fexdb%2Fpublis%2Fpsgz%2Fsermanet-ijcnn-11.ps.gz&usg=AFQjCNGTHlNOHKmIxaKYw3_h-VYrsgpCag&sig2=llvR7_9QizK3hkAgkmUKTw) and use only one fully connected layer at the end of the network.
+I changed the network using multi-scale features as suggested in the paper [Traffic Sign Recognition with Multi-Scale Convolutional Networks](https://www.google.fr/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwi079aWzOjSAhWHJ8AKHUx_ARkQFggdMAA&url=http%3A%2F%2Fyann.lecun.org%2Fexdb%2Fpublis%2Fpsgz%2Fsermanet-ijcnn-11.ps.gz&usg=AFQjCNGTHlNOHKmIxaKYw3_h-VYrsgpCag&sig2=llvR7_9QizK3hkAgkmUKTw) and use only one fully connected layer at the end of the network.
 
 <img src="./examples/net.png" width="800" /> 
 
@@ -276,7 +276,7 @@ I augmented the training set using the Keras function [ImageDataGenerator](https
 Number of training examples = 34799x2 = 69598   
 Number of validation examples = 4410   
 
-Used Dropout (referred [this table](https://github.com/jokla/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup.md#3-final-model-architecture)):   
+I Used Dropout with the follow probability (referred [this table](https://github.com/jokla/CarND-Traffic-Sign-Classifier-Project/blob/master/writeup.md#3-final-model-architecture)):   
 a) `0.8`   
 b) `0.7`   
 c) `0.6 `  
@@ -287,21 +287,20 @@ First layer: from 6 to 12 filters.
 Second layer: from 16 to 24 filters.   
 
 #### Final attempt: validation accuracy 98.5%
-I augmented the data adding the motion blur to each sample of the training data. Hence, I triplicate the number of samples in the training set.   
-In addition, I added the L2 regularization and I used the function `equalize_adapthist` instead of `.exposure.adjust_log` during the image preprocessing.
+I augmented the data adding the motion blur to each sample of the training data. Hence, I triplicate the number of samples in the training set. In addition, I added the L2 regularization and I used the function `equalize_adapthist` instead of `.exposure.adjust_log` during the image preprocessing.
 
 ### Performance on the test set
 Finally I evaluated the performance of my model with the test set.
 
 #### Accuracy
-The accuracy was equal to 96.6%.
+The accuracy was equal to  97.2%.
 
 #### Precision
-The Precision  was equal to  95.5%   
+The Precision  was equal to 96.6%   
 The precision is the ratio `tp / (tp + fp)` where `tp` is the number of true positives and `fp` the number of false positives. The precision is intuitively the ability of the classifier not to label as positive a sample that is negative.
 
 #### Recall
-The recall  was equal to  97.6%
+The recall  was equal to  97.2%
 The recall is the ratio `tp / (tp + fn)` where `tp` is the number of true positives and `fn` the number of false negatives. The recall is intuitively the ability of the classifier to find all the positive samples.
 
 #### Confusion matrix
